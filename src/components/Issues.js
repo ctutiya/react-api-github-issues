@@ -4,7 +4,6 @@ import IssuesCard from "./IssuesCard"
 class Issues extends Component {
     render() {
         const { content } = this.props
-        console.log('Content', content)
 
         return (
             <div className="issues-container">
