@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react'
+import Issues from './components/Issues'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css'
+
+class App extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            data: []
+        }
+    }
+
+    componentWillMount() {
+        this.fetchData()
+    }
+
+    fetchData = async (plabel = '') => {
+        try {
+            let query = ''
+
+            if (plabel !== '') query = `&labels=${plabel}`
+
+            const response =  await fetch(`https://api.github.com/repos/vercel/next.js/issues?state=open${query}`)
+            const data = await response.json()
+
+            this.setState({ data })
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    filterLabel = (event) => {
+        event.preventDefault()
+
+        this.fetchData(event.target.txtLabel.value)
+    }
+
+    render() {
+        return (
+            <>
+                <h1>GitHub API - repository issues</h1>
+
+                <form onSubmit={this.filterLabel}>
+                    <input type="text" name="txtLabel" placeholder="enter label..." />
+                    <button type="submit">filter</button>
+                </form>
+
+                <Issues content={this.state.data} />
+            </>
+        )
+    }
 }
 
-export default App;
+export default App

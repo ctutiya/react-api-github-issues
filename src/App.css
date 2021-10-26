@@ -1,38 +1,101 @@
-.App {
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p {
+  margin: 0; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  color: #333;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
+  padding: 10px;
+  text-align: right;
+}
+
+button {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.issues-container {
+  width: calc(100% - 20px);
+  padding: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.issues-card {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0px 4px 20px 0px rgb(0 0 0 / 15%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.issues-header {
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  display: flex;
+  align-items: center;
+}
+
+.issues-header img {
+  width: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.issues-labels {
+  padding-top: 5px;
+}
+
+.issues-labels p {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.issues-labels .label {
+  padding: 3px;
+  font-size: 10px;
+  border-radius: 3px;
+}
+
+.issues-labels .label.white {
+  color: #FFF;
+}
+
+@media only screen and (min-width: 768px) {
+  .issues-card {
+    width: calc(50% - 30px);
   }
-  to {
-    transform: rotate(360deg);
+  
+  form {
+    padding-right: 14px;
+  }
+} 
+
+@media only screen and (min-width: 992px) {
+  .issues-card {
+    width: calc(33% - 30px);
+  }
+  
+  form {
+    padding-right: 19px;
+  }
+} 
+
+@media only screen and (min-width: 1200px) {
+  .issues-card {
+    width: calc(25% - 30px);
+  }
+  
+  form {
+    padding-right: 14px;
   }
 }
